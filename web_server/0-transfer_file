@@ -1,11 +1,28 @@
-#!/usr/bin/env bash
-# comment
-if [ $# -lt 4 ]; then
-    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+#!/usr/bin/env bas
+# checking for command line arguments
+
+if [ $# -lt 4 ]
+then
+        echo "0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+        exit 1
+fi
+
+# assigning paramentals to variables
+
+path_to_file=$1
+ip=$2
+username=$3
+path_to_shh_key=$4
+
+# disabbling strict host key checking
+
+scp -0 "StrictHostkeyChecking=no" -i "$past_to_ssh_key" "$path_to_file" "$username@$ip:~/"
+
+
+# checking if the transfer was successful
+if [ $? -eq 0 ]
+then
+	echo "FILE WAS TRANSFERED SUCCESSFULLY
 else
-    file="$1"
-    host="$2"
-    username="$3"
-    private_key="$4"
-    scp -i "$private_key" -o StrictHostKeyChecking=no "$file" "$username@$host:~/"
+	echo "FILE TRANSFER FAILED"
 fi
