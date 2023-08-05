@@ -22,12 +22,12 @@ frontend http-in
 
 backend webservers
     balance roundrobin
-    server web-01 54.81.49.198:80 check
-    server web-02 34.226.195.209:80 check
+    server web-01 54.146.227.95:80 check
+    server web-02 3.90.102.206:80 check
 EOT
 
 # Update the hostname
-sudo hostnamectl set-hostname 53580825-haproxy
+sudo hostnamectl set-hostname 578007606-haproxy
 
 # Enable HAProxy as a service managed by the init script
 sudo service haproxy enable 
